@@ -19,5 +19,24 @@
     ],
     "dateMaj": "2026-08-18T13:10:12.567Z",
     "auteur": "Responsable bobineuse"
+  },
+  {
+    "id": "f-1787059788701-pas-d-enregistrement-des-bobines-meres-sur-wis",
+    "titre": "Pas d'enregistrement des bobines mères sur WIS",
+    "equipement": "Procemex",
+    "cycle": "Bobinage",
+    "motsCles": [
+      "Procemex",
+      "WIS",
+      "bobine mère",
+      "métrage",
+      "metrage"
+    ],
+    "description": "Le Procemex WIS ne crée pas de nouvelle bobine mère sur le système. Le métrage s'accumule sur une bobine mère.",
+    "solution": "Vérifier que tous les caractères sur le numéro de bobine est correct (%I)",
+    "pdf": "uploads/f-1787059788701-pas-d-enregistrement-des-bobines-meres-sur-wis/note-d-information-procemex-wis-docx.pdf",
+    "photos": [],
+    "dateMaj": "2026-08-18T13:29:52.374Z",
+    "auteur": "Responsable bobineuse"
   }
 ]
