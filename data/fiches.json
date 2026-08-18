@@ -82,8 +82,8 @@
     "auteur": "Responsable bobineuse"
   },
   {
-    "id": "f-1787062074580-papier-qui-se-dechirer-a-l-application-de-la-colle-et-perfor",
-    "titre": "Papier qui se déchirer à l'application de la colle et perforation en bordure CC",
+    "id": "f-1787062368736-papier-qui-se-dechire-a-l-application-de-la-colle-et-perfora",
+    "titre": "Papier qui se déchire à l'application de la colle et perforation en bordure CC",
     "equipement": "Diffusion de colle",
     "cycle": "Changement de levée",
     "motsCles": [
@@ -91,15 +91,17 @@
       "CC",
       "feuille déchirée",
       "colle",
-      "perforation"
+      "perforation",
+      "cordon",
+      "liquide"
     ],
-    "description": "Le papier se déchire au moment de l'application de la colle sur la feuille. La feuille colle côté conducteur sur le rouleau applicateur. \nPrésence d'un cordon de colle liquide côté conducteur au démarrage de la diffusion de colle",
-    "solution": "Réduire la pression de retour (standard entre 0,6 et 1 bar)",
+    "description": "Le papier se colle au rouleau applicateur de colle. Le papier peut se déchirer côté conducteur. \nPrésence d'un cordon de colle liquide sur le début de la diffusion de colle côté conducteur.",
+    "solution": "Réduire la pression de retour (standard entre 0,5 et 1 bar)",
     "pdf": null,
     "photos": [
-      "uploads/f-1787062074580-papier-qui-se-dechirer-a-l-application-de-la-colle-et-perfor/1787062074600-20220315-153228-1-jpg.jpg"
+      "uploads/f-1787062368736-papier-qui-se-dechire-a-l-application-de-la-colle-et-perfora/1787062368754-20220315-153228-1-jpg.jpg"
     ],
-    "dateMaj": "2026-08-18T14:07:59.390Z",
+    "dateMaj": "2026-08-18T14:12:53.580Z",
     "auteur": "Responsable bobineuse"
   }
 ]
