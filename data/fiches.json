@@ -59,5 +59,26 @@
     ],
     "dateMaj": "2026-08-18T13:34:25.156Z",
     "auteur": "Responsable bobineuse"
+  },
+  {
+    "id": "f-1787060398054-colle-trop-large",
+    "titre": "Colle trop large",
+    "equipement": "Diffusion de colle",
+    "cycle": "Changement de levée",
+    "motsCles": [
+      "colle",
+      "diffusion",
+      "jet",
+      "jet large",
+      "large"
+    ],
+    "description": "La colle est trop large (supérieur 2cm)",
+    "solution": "Réduire la pression d'air sur le manomètre (valeur standard 2 bars)\nRéduire le débit d'air sur le détendeur en dessous de la tête de colle (0.5 tour par 0.5 tour)",
+    "pdf": null,
+    "photos": [
+      "uploads/f-1787060398054-colle-trop-large/1787060398075-20260818-114909-jpg.jpg"
+    ],
+    "dateMaj": "2026-08-18T13:40:03.039Z",
+    "auteur": "Responsable bobineuse"
   }
 ]
