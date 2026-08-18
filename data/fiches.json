@@ -38,5 +38,26 @@
     "photos": [],
     "dateMaj": "2026-08-18T13:29:52.374Z",
     "auteur": "Responsable bobineuse"
+  },
+  {
+    "id": "f-1787060060267-casse-pour-resine-collante",
+    "titre": "Casse pour résine collante",
+    "equipement": "Autres",
+    "cycle": "Bobinage",
+    "motsCles": [
+      "casse",
+      "résine",
+      "collante",
+      "tâches noires",
+      "défaut noir"
+    ],
+    "description": "Casse sur un défaut noir (résine d'aspect collante/humide)",
+    "solution": "Prévenir la machine 5 de la présence de résine collante. Il faut nettoyer la lame du cylindre 65",
+    "pdf": null,
+    "photos": [
+      "uploads/f-1787060060267-casse-pour-resine-collante/1787060060292-20260818-114755-jpg.jpg"
+    ],
+    "dateMaj": "2026-08-18T13:34:25.156Z",
+    "auteur": "Responsable bobineuse"
   }
 ]
