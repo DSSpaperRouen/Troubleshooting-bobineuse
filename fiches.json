@@ -1,0 +1,15 @@
+[
+  {
+    "id": "f-exemple-001",
+    "titre": "Bourrage fil en sortie de guide-fil",
+    "equipement": "Bobineuse 1",
+    "cycle": "Cycle bobinage",
+    "motsCles": ["bourrage", "guide-fil", "casse fil"],
+    "description": "Le fil s'accumule et bourre au niveau du guide-fil en sortie de tension, ce qui provoque un arrêt machine en défaut tension.",
+    "solution": "1. Arrêter la bobineuse et couper l'alimentation du moteur d'entraînement.\n2. Ouvrir le capot du guide-fil et retirer le fil accumulé.\n3. Vérifier que le galet du guide-fil tourne librement (nettoyer si besoin).\n4. Vérifier le réglage de tension (voir plaque de réglage).\n5. Relancer un cycle test avant de remettre en production.",
+    "pdf": null,
+    "photos": [],
+    "dateMaj": "2026-08-18T00:00:00.000Z",
+    "auteur": "Exemple (à modifier ou supprimer)"
+  }
+]

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aide Dépannage Bobineuse</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --orange: #F97316;
+    --orange-dark: #C2550E;
+    --orange-light: #FFF0E6;
+    --anthracite: #2D2D2D;
+    --anthracite-mid: #4A4A4A;
+    --bg: #FFFFFF;
+    --bg-soft: #F7F7F7;
+    --border: #E0E0E0;
+    --muted: #9A9A9A;
+    --white: #FFFFFF;
+    --green: #22C55E;
+    --green-light: #F0FDF4;
+    --red: #EF4444;
+    --red-light: #FEF2F2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    background: var(--bg-soft);
+    color: var(--anthracite);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+  }
+  a { color: inherit; }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--orange);
+    padding: 16px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  .header-row { display: flex; align-items: center; gap: 16px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .logo span { font-weight: 400; opacity: 0.85; }
+  .search-wrap { flex: 1; min-width: 220px; position: relative; }
+  .search-wrap input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 14px 11px 40px;
+    font-size: 15px;
+    font-family: 'Barlow', sans-serif;
+    background: #fff;
+  }
+  .search-wrap input:focus { outline: 3px solid rgba(255,255,255,0.5); }
+  .search-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); font-size: 16px; opacity: 0.5; }
+
+  .btn {
+    border: none;
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+  }
+  .btn-white { background: #fff; color: var(--orange-dark); }
+  .btn-white:hover { background: var(--orange-light); }
+  .btn-ghost-on-orange { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.5); color: #fff; }
+  .btn-ghost-on-orange:hover { background: rgba(255,255,255,0.3); }
+  .btn-orange { background: var(--orange); color: #fff; }
+  .btn-orange:hover { background: var(--orange-dark); }
+  .btn-outline { background: #fff; color: var(--anthracite); border: 2px solid var(--border); }
+  .btn-outline:hover { border-color: var(--anthracite-mid); }
+  .btn-red { background: var(--red-light); color: var(--red); border: 2px solid #FCA5A5; }
+  .btn-red:hover { background: #FEE2E2; }
+  .btn:disabled { opacity: .5; cursor: not-allowed; }
+
+  /* ── FILTER BAR ── */
+  .filters {
+    max-width: 1100px;
+    margin: 18px auto 0;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  select {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 9px 12px;
+    border-radius: 9px;
+    border: 2px solid var(--border);
+    background: #fff;
+    color: var(--anthracite);
+  }
+  .result-count { font-size: 13px; color: var(--muted); font-weight: 600; margin-left: auto; }
+
+  /* ── MAIN ── */
+  main { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .card {
+    background: #fff;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all .15s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); }
+  .card-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    color: var(--anthracite-mid);
+  }
+  .badge-orange { background: var(--orange-light); border-color: #FFD9B8; color: var(--orange-dark); }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; line-height: 1.15; text-transform: uppercase; }
+  .card-desc { font-size: 13.5px; color: var(--anthracite-mid); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .card-meta { display: flex; gap: 10px; margin-top: auto; padding-top: 6px; font-size: 12px; color: var(--muted); align-items: center; }
+
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+  .empty-state span { font-size: 40px; display: block; margin-bottom: 12px; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(20,20,20,0.55);
+    z-index: 500;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 20px 12px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 680px;
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  .modal-header {
+    background: var(--orange);
+    padding: 18px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+  }
+  .modal-header h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #fff;
+    flex: 1;
+    line-height: 1.1;
+  }
+  .modal-close { background: rgba(255,255,255,0.2); border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; flex-shrink: 0; }
+  .modal-body { padding: 22px; }
+  .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 18px 0 8px; }
+  .section-label:first-child { margin-top: 0; }
+  .body-text { font-size: 15px; line-height: 1.7; color: var(--anthracite-mid); white-space: pre-wrap; }
+
+  .photo-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px,1fr)); gap: 8px; }
+  .photo-gallery img { width: 100%; height: 110px; object-fit: cover; border-radius: 10px; border: 2px solid var(--border); cursor: zoom-in; }
+
+  .pdf-link { display: flex; align-items: center; gap: 10px; background: var(--bg-soft); border: 2px solid var(--border); border-radius: 10px; padding: 12px 14px; text-decoration: none; color: var(--anthracite); font-weight: 600; }
+  .pdf-link:hover { border-color: var(--orange); }
+  .pdf-link .ico { font-size: 22px; }
+
+  .modal-footer { padding: 16px 22px 22px; display: flex; gap: 10px; }
+
+  /* ── FORM ── */
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--anthracite-mid); margin-bottom: 6px; }
+  .form-group input[type=text], .form-group textarea, .form-group input[type=file] {
+    width: 100%;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    color: var(--anthracite);
+  }
+  .form-group textarea { min-height: 90px; resize: vertical; }
+  .form-row { display: flex; gap: 12px; }
+  .form-row .form-group { flex: 1; }
+  .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .existing-files { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .existing-files img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 2px solid var(--border); }
+  .chip-remove { position: relative; }
+  .chip-remove button { position: absolute; top: -6px; right: -6px; background: var(--red); color: #fff; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; cursor: pointer; }
+
+  .toast {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: var(--anthracite); color: #fff; padding: 12px 20px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; z-index: 900; display: none; max-width: 90%; text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+  .toast.show { display: block; }
+  .toast.error { background: var(--red); }
+  .toast.success { background: var(--green); }
+
+  .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; vertical-align: -2px; margin-right: 6px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 700; align-items: center; justify-content: center; padding: 20px; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; }
+
+  .login-note { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 13px; line-height: 1.6; color: var(--anthracite-mid); margin-bottom: 16px; }
+  .login-note ol { margin-left: 18px; margin-top: 6px; }
+
+  footer { text-align: center; padding: 30px 20px; font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <div class="logo">SOS <span>Bobineuse</span></div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Rechercher un problème, un équipement, un mot-clé…" />
+    </div>
+    <button class="btn btn-ghost-on-orange" id="btnLogin">🔒 Espace responsable</button>
+    <button class="btn btn-white" id="btnNewFiche" style="display:none;">+ Nouvelle fiche</button>
+  </div>
+</header>
+
+<div class="filters">
+  <select id="filterEquip"><option value="">Tous les équipements</option></select>
+  <select id="filterCycle"><option value="">Tous les cycles</option></select>
+  <span class="result-count" id="resultCount"></span>
+</div>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <span>🗂️</span>
+    Aucune fiche ne correspond à votre recherche.
+  </div>
+</main>
+
+<footer>Application de dépannage — les fiches sont mises à jour par les responsables bobineuse et les chefs de service.</footer>
+
+<!-- ── FICHE DETAIL MODAL ── -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="detailTitle"></h2>
+      <button class="modal-close" onclick="closeModal('detailModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="card-badges" id="detailBadges"></div>
+
+      <div class="section-label">Problème constaté</div>
+      <div class="body-text" id="detailDescription"></div>
+
+      <div class="section-label">Solution / procédure</div>
+      <div class="body-text" id="detailSolution"></div>
+
+      <div id="detailPdfWrap" style="display:none;">
+        <div class="section-label">Document PDF</div>
+        <a href="#" target="_blank" class="pdf-link" id="detailPdfLink"><span class="ico">📄</span><span>Ouvrir le document PDF</span></a>
+      </div>
+
+      <div id="detailPhotosWrap" style="display:none;">
+        <div class="section-label">Photos du défaut</div>
+        <div class="photo-gallery" id="detailPhotos"></div>
+      </div>
+
+      <div class="section-label">Dernière mise à jour</div>
+      <div class="hint" id="detailMeta"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" id="btnEditFiche" style="display:none;">✏️ Modifier cette fiche</button>
+      <button class="btn btn-red" id="btnDeleteFiche" style="display:none;">🗑️ Supprimer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── LOGIN MODAL ── -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal-header">
+      <h2>Espace responsable</h2>
+      <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="login-note">
+        Pour ajouter ou modifier une fiche, connectez-vous avec votre clé d'accès GitHub (fournie par la personne qui gère le site).
+        <ol>
+          <li>Sur GitHub : <b>Settings → Developer settings → Fine-grained tokens → Generate new token</b></li>
+          <li>Donnez accès uniquement à ce dépôt, avec la permission <b>Contents: Read and write</b></li>
+          <li>Collez la clé générée ci-dessous</li>
+        </ol>
+      </div>
+      <div class="form-group">
+        <label for="tokenInput">Clé d'accès (token GitHub)</label>
+        <input type="text" id="tokenInput" placeholder="github_pat_..." autocomplete="off" />
+      </div>
+      <div id="loginStatus" class="hint"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-orange" id="btnDoLogin">Se connecter</button>
+      <button class="btn btn-outline" id="btnDoLogout" style="display:none;">Se déconnecter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── EDIT/CREATE MODAL ── -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="editModalTitle">Nouvelle fiche</h2>
+      <button class="modal-close" onclick="closeModal('editModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fTitre">Titre du problème</label>
+          <input type="text" id="fTitre" placeholder="Ex : Bourrage fil en sortie de guide-fil" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fEquip">Équipement</label>
+          <select id="fEquip"></select>
+        </div>
+        <div class="form-group">
+          <label for="fCycle">Cycle</label>
+          <select id="fCycle"></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fMots">Mots-clés (séparés par des virgules)</label>
+        <input type="text" id="fMots" placeholder="Ex : bourrage, guide-fil, casse fil" />
+      </div>
+      <div class="form-group">
+        <label for="fDescription">Problème constaté</label>
+        <textarea id="fDescription" placeholder="Décrivez le défaut observé…"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="fSolution">Solution / procédure</label>
+        <textarea id="fSolution" placeholder="Décrivez les étapes de résolution…"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="fPdf">Fichier PDF (procédure, plan, notice…)</label>
+        <div id="existingPdf" class="hint"></div>
+        <input type="file" id="fPdf" accept="application/pdf" />
+        <div class="hint">Laissez vide pour conserver le PDF actuel. Choisissez un fichier pour le remplacer.</div>
+      </div>
+      <div class="form-group">
+        <label for="fPhotos">Photos du défaut</label>
+        <div id="existingPhotos" class="existing-files"></div>
+        <input type="file" id="fPhotos" accept="image/*" multiple />
+        <div class="hint">Vous pouvez sélectionner plusieurs photos. Elles s'ajouteront aux photos existantes.</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-orange" id="btnSaveFiche">💾 Enregistrer la fiche</button>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+  <img id="lightboxImg" src="" />
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   CONFIGURATION — à adapter une seule fois avant la mise en ligne
+   ============================================================ */
+const CONFIG = {
+  owner: 'VOTRE-COMPTE-OU-ORGANISATION',   // ex: 'usine-textile'
+  repo: 'VOTRE-DEPOT',                     // ex: 'aide-bobineuse'
+  branch: 'main',
+  dataPath: 'data/fiches.json',
+  uploadsPath: 'uploads'
+};
+
+// Liste fixe des équipements proposés dans les menus (modifiable ici si besoin)
+const EQUIPMENTS = [
+  'Procemex',
+  'Optivision bobineuse',
+  'Optivision emballage + convoyeur',
+  'DCS',
+  'Coupeuse à mandrin',
+  'Insertion des mandrins',
+  'Maintien des mandrins',
+  'Magasin auto',
+  'Trappe + pulpeur',
+  'Dérouleuse',
+  'Bras de levage',
+  'Rouleau d\'application bobine mère + coupe',
+  'Poste de coupe',
+  'Passage de pointe',
+  'Rouleaux embarreurs',
+  'Station de colle',
+  'Diffusion de colle',
+  'Rouleau applicateur colle + perforation',
+  'Éjecteur',
+  'Rouleaux porteurs',
+  'Poste d\'enroulage',
+  'Rouleaux presseurs',
+  'Pelle + taquets sortie bobineuse',
+  'Emballage',
+  'Pesage',
+  'Marquage jet d\'encre',
+  'Étiquetage',
+  'Entrée tunnel',
+  'Groupe hydraulique mouvement',
+  'Groupe hydraulique palier rouleaux porteurs'
+];
+
+// Liste fixe des cycles proposés dans les menus (modifiable ici si besoin)
+const CYCLES = [
+  'Déplacement bobine mère sur magasin auto',
+  'Changement de bobine mère',
+  'Changement de format',
+  'Dernier jeu',
+  'Changement de levée',
+  'Emballage',
+  'Évacuation bobines à l\'entrée tunnel',
+  'Évacuation bobines sortie bobineuse',
+  'Passage de pointe',
+  'Découpe et insertion des mandrins'
+];
+
+/* ============================================================
+   ÉTAT
+   ============================================================ */
+let fiches = [];
+let token = localStorage.getItem('sb_gh_token') || '';
+let isAdmin = false;
+let editingId = null;
+let removedExistingPdf = false;
+
+const $ = (id) => document.getElementById(id);
+
+/* ============================================================
+   CHARGEMENT DES DONNÉES (lecture publique, sans clé)
+   ============================================================ */
+async function loadFiches() {
+  try {
+    const res = await fetch('./' + CONFIG.dataPath + '?t=' + Date.now());
+    fiches = res.ok ? await res.json() : [];
+  } catch (e) {
+    fiches = [];
+  }
+  buildFilterOptions();
+  render();
+}
+
+/* ============================================================
+   AFFICHAGE
+   ============================================================ */
+function normalize(str) {
+  return (str || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function getFiltered() {
+  const q = normalize($('searchInput').value.trim());
+  const eq = $('filterEquip').value;
+  const cy = $('filterCycle').value;
+  return fiches.filter(f => {
+    if (eq && f.equipement !== eq) return false;
+    if (cy && f.cycle !== cy) return false;
+    if (!q) return true;
+    const haystack = normalize([f.titre, f.equipement, f.cycle, f.description, (f.motsCles||[]).join(' ')].join(' '));
+    return haystack.includes(q);
+  });
+}
+
+function render() {
+  const list = getFiltered();
+  $('resultCount').textContent = list.length + (list.length > 1 ? ' fiches' : ' fiche');
+  const grid = $('grid');
+  grid.innerHTML = '';
+  $('emptyState').style.display = list.length ? 'none' : 'block';
+  list.sort((a,b) => (b.dateMaj||'').localeCompare(a.dateMaj||'')).forEach(f => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.onclick = () => openDetail(f.id);
+    card.innerHTML = `
+      <div class="card-badges">
+        <span class="badge badge-orange">${escapeHtml(f.equipement||'—')}</span>
+        <span class="badge">${escapeHtml(f.cycle||'—')}</span>
+      </div>
+      <div class="card-title">${escapeHtml(f.titre||'Sans titre')}</div>
+      <div class="card-desc">${escapeHtml(f.description||'')}</div>
+      <div class="card-meta">
+        ${f.pdf ? '<span>📄 PDF</span>' : ''}
+        ${(f.photos&&f.photos.length) ? `<span>🖼️ ${f.photos.length} photo${f.photos.length>1?'s':''}</span>` : ''}
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function escapeHtml(s) {
+  return (s||'').toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+function buildFilterOptions() {
+  const equips = [...new Set([...EQUIPMENTS, ...fiches.map(f => f.equipement).filter(Boolean)])];
+  const cycles = [...new Set([...CYCLES, ...fiches.map(f => f.cycle).filter(Boolean)])];
+  const equipSel = $('filterEquip'), cycleSel = $('filterCycle');
+  const prevE = equipSel.value, prevC = cycleSel.value;
+  equipSel.innerHTML = '<option value="">Tous les équipements</option>' + equips.map(e => `<option value="${escapeHtml(e)}">${escapeHtml(e)}</option>`).join('');
+  cycleSel.innerHTML = '<option value="">Tous les cycles</option>' + cycles.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+  equipSel.value = prevE; cycleSel.value = prevC;
+  $('fEquip').innerHTML = '<option value="">— Choisir un équipement —</option>' + equips.map(e => `<option value="${escapeHtml(e)}">${escapeHtml(e)}</option>`).join('');
+  $('fCycle').innerHTML = '<option value="">— Choisir un cycle —</option>' + cycles.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+}
+
+$('searchInput').addEventListener('input', render);
+$('filterEquip').addEventListener('change', render);
+$('filterCycle').addEventListener('change', render);
+
+/* ============================================================
+   DÉTAIL D'UNE FICHE
+   ============================================================ */
+let currentDetailId = null;
+function openDetail(id) {
+  const f = fiches.find(x => x.id === id);
+  if (!f) return;
+  currentDetailId = id;
+  $('detailTitle').textContent = f.titre || 'Sans titre';
+  $('detailBadges').innerHTML = `<span class="badge badge-orange">${escapeHtml(f.equipement||'—')}</span><span class="badge">${escapeHtml(f.cycle||'—')}</span>` +
+    (f.motsCles||[]).map(m => `<span class="badge">#${escapeHtml(m)}</span>`).join('');
+  $('detailDescription').textContent = f.description || '—';
+  $('detailSolution').textContent = f.solution || '—';
+
+  if (f.pdf) {
+    $('detailPdfWrap').style.display = 'block';
+    $('detailPdfLink').href = rawUrl(f.pdf);
+  } else { $('detailPdfWrap').style.display = 'none'; }
+
+  if (f.photos && f.photos.length) {
+    $('detailPhotosWrap').style.display = 'block';
+    $('detailPhotos').innerHTML = f.photos.map(p => `<img src="${rawUrl(p)}" onclick="openLightbox('${rawUrl(p)}')" />`).join('');
+  } else { $('detailPhotosWrap').style.display = 'none'; }
+
+  $('detailMeta').textContent = (f.dateMaj ? new Date(f.dateMaj).toLocaleString('fr-FR') : '—') + (f.auteur ? ' — ' + f.auteur : '');
+
+  $('btnEditFiche').style.display = isAdmin ? 'inline-flex' : 'none';
+  $('btnDeleteFiche').style.display = isAdmin ? 'inline-flex' : 'none';
+  openModal('detailModal');
+}
+
+function rawUrl(path) {
+  return `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${path}`;
+}
+
+function openLightbox(src) { $('lightboxImg').src = src; $('lightbox').classList.add('active'); }
+
+$('btnEditFiche').addEventListener('click', () => {
+  closeModal('detailModal');
+  openEditForm(currentDetailId);
+});
+$('btnDeleteFiche').addEventListener('click', async () => {
+  if (!confirm('Supprimer définitivement cette fiche ?')) return;
+  fiches = fiches.filter(f => f.id !== currentDetailId);
+  await saveFichesJson('Suppression fiche');
+  closeModal('detailModal');
+  buildFilterOptions();
+  render();
+  showToast('Fiche supprimée.', 'success');
+});
+
+/* ============================================================
+   MODALES génériques
+   ============================================================ */
+function openModal(id) { $(id).classList.add('active'); }
+function closeModal(id) { $(id).classList.remove('active'); }
+document.querySelectorAll('.modal-overlay').forEach(ov => {
+  ov.addEventListener('click', e => { if (e.target === ov) ov.classList.remove('active'); });
+});
+
+/* ============================================================
+   CONNEXION RESPONSABLE (GitHub Personal Access Token)
+   ============================================================ */
+$('btnLogin').addEventListener('click', () => {
+  $('tokenInput').value = token;
+  $('loginStatus').textContent = '';
+  $('btnDoLogout').style.display = isAdmin ? 'inline-flex' : 'none';
+  openModal('loginModal');
+});
+
+$('btnDoLogin').addEventListener('click', async () => {
+  const t = $('tokenInput').value.trim();
+  if (!t) { $('loginStatus').textContent = 'Merci de saisir une clé.'; return; }
+  $('loginStatus').textContent = 'Vérification…';
+  try {
+    const res = await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}`, {
+      headers: { Authorization: `Bearer ${t}`, Accept: 'application/vnd.github+json' }
+    });
+    if (!res.ok) throw new Error('unauthorized');
+    const info = await res.json();
+    if (!info.permissions || !info.permissions.push) {
+      $('loginStatus').textContent = "Cette clé n'a pas les droits de modification sur ce dépôt.";
+      return;
+    }
+    token = t;
+    localStorage.setItem('sb_gh_token', t);
+    isAdmin = true;
+    updateAdminUI();
+    $('loginStatus').textContent = 'Connecté !';
+    setTimeout(() => closeModal('loginModal'), 500);
+  } catch (e) {
+    $('loginStatus').textContent = 'Clé invalide ou accès refusé.';
+  }
+});
+
+$('btnDoLogout').addEventListener('click', () => {
+  token = ''; localStorage.removeItem('sb_gh_token'); isAdmin = false;
+  updateAdminUI();
+  closeModal('loginModal');
+});
+
+function updateAdminUI() {
+  $('btnNewFiche').style.display = isAdmin ? 'inline-flex' : 'none';
+  $('btnLogin').textContent = isAdmin ? '🔓 Responsable connecté' : '🔒 Espace responsable';
+}
+
+// Vérifie discrètement le token stocké au chargement
+async function checkStoredToken() {
+  if (!token) return;
+  try {
+    const res = await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}`, {
+      headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
+    });
+    if (res.ok) {
+      const info = await res.json();
+      isAdmin = !!(info.permissions && info.permissions.push);
+    }
+  } catch (e) { /* silencieux */ }
+  updateAdminUI();
+}
+
+/* ============================================================
+   FORMULAIRE CRÉATION / MODIFICATION
+   ============================================================ */
+$('btnNewFiche').addEventListener('click', () => openEditForm(null));
+
+let existingPhotosState = [];
+let existingPdfState = null;
+
+function openEditForm(id) {
+  editingId = id;
+  removedExistingPdf = false;
+  const f = id ? fiches.find(x => x.id === id) : null;
+  $('editModalTitle').textContent = f ? 'Modifier la fiche' : 'Nouvelle fiche';
+  $('fTitre').value = f ? f.titre || '' : '';
+  $('fEquip').value = f ? f.equipement || '' : '';
+  $('fCycle').value = f ? f.cycle || '' : '';
+  $('fMots').value = f ? (f.motsCles||[]).join(', ') : '';
+  $('fDescription').value = f ? f.description || '' : '';
+  $('fSolution').value = f ? f.solution || '' : '';
+  $('fPdf').value = '';
+  $('fPhotos').value = '';
+  existingPdfState = f ? f.pdf || null : null;
+  existingPhotosState = f ? [...(f.photos||[])] : [];
+  renderExistingPdf();
+  renderExistingPhotos();
+  openModal('editModal');
+}
+
+function renderExistingPdf() {
+  $('existingPdf').innerHTML = existingPdfState
+    ? `PDF actuel : <b>${existingPdfState.split('/').pop()}</b> <button type="button" onclick="removeExistingPdf()" style="margin-left:8px;color:var(--red);border:none;background:none;cursor:pointer;">retirer</button>`
+    : '';
+}
+function removeExistingPdf() { existingPdfState = null; removedExistingPdf = true; renderExistingPdf(); }
+
+function renderExistingPhotos() {
+  $('existingPhotos').innerHTML = existingPhotosState.map((p, i) => `
+    <div class="chip-remove">
+      <img src="${rawUrl(p)}" />
+      <button type="button" onclick="removeExistingPhoto(${i})">✕</button>
+    </div>`).join('');
+}
+function removeExistingPhoto(i) { existingPhotosState.splice(i, 1); renderExistingPhotos(); }
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result.split(',')[1]);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+
+function slugify(str) {
+  return normalize(str).replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').slice(0, 60);
+}
+
+async function ghGetSha(path) {
+  try {
+    const res = await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}?ref=${CONFIG.branch}`, {
+      headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
+    });
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error('erreur lecture ' + path);
+    const j = await res.json();
+    return j.sha;
+  } catch (e) { return null; }
+}
+
+async function ghPutFile(path, base64Content, message) {
+  const sha = await ghGetSha(path);
+  const body = { message, content: base64Content, branch: CONFIG.branch };
+  if (sha) body.sha = sha;
+  const res = await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || ('Échec envoi ' + path));
+  }
+  return res.json();
+}
+
+async function saveFichesJson(commitMessage) {
+  const sha = await ghGetSha(CONFIG.dataPath);
+  const jsonStr = JSON.stringify(fiches, null, 2);
+  const b64 = btoa(unescape(encodeURIComponent(jsonStr)));
+  const body = { message: commitMessage, content: b64, branch: CONFIG.branch };
+  if (sha) body.sha = sha;
+  const res = await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.dataPath}`, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || 'Échec de mise à jour des fiches');
+  }
+}
+
+$('btnSaveFiche').addEventListener('click', async () => {
+  if (!isAdmin) { showToast("Vous n'êtes pas connecté.", 'error'); return; }
+  const titre = $('fTitre').value.trim();
+  if (!titre) { showToast('Le titre est obligatoire.', 'error'); return; }
+
+  const btn = $('btnSaveFiche');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Enregistrement…';
+
+  try {
+    const id = editingId || ('f-' + Date.now() + '-' + slugify(titre));
+    const folder = `${CONFIG.uploadsPath}/${id}`;
+
+    // PDF
+    let pdfPath = existingPdfState;
+    const pdfFile = $('fPdf').files[0];
+    if (pdfFile) {
+      const b64 = await fileToBase64(pdfFile);
+      pdfPath = `${folder}/${slugify(pdfFile.name)}.pdf`;
+      await ghPutFile(pdfPath, b64, `Ajout PDF — ${titre}`);
+    }
+
+    // Photos (ajoutées aux photos existantes conservées)
+    const photoFiles = Array.from($('fPhotos').files || []);
+    const newPhotoPaths = [];
+    for (const file of photoFiles) {
+      const b64 = await fileToBase64(file);
+      const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+      const path = `${folder}/${Date.now()}-${slugify(file.name)}.${ext}`;
+      await ghPutFile(path, b64, `Ajout photo — ${titre}`);
+      newPhotoPaths.push(path);
+    }
+    const allPhotos = [...existingPhotosState, ...newPhotoPaths];
+
+    const ficheObj = {
+      id,
+      titre,
+      equipement: $('fEquip').value.trim(),
+      cycle: $('fCycle').value.trim(),
+      motsCles: $('fMots').value.split(',').map(s => s.trim()).filter(Boolean),
+      description: $('fDescription').value.trim(),
+      solution: $('fSolution').value.trim(),
+      pdf: pdfPath,
+      photos: allPhotos,
+      dateMaj: new Date().toISOString(),
+      auteur: 'Responsable bobineuse'
+    };
+
+    const idx = fiches.findIndex(f => f.id === id);
+    if (idx >= 0) fiches[idx] = ficheObj; else fiches.push(ficheObj);
+
+    await saveFichesJson((editingId ? 'Modification' : 'Création') + ' fiche : ' + titre);
+
+    buildFilterOptions();
+    render();
+    closeModal('editModal');
+    showToast('Fiche enregistrée. Le site public sera à jour dans une minute environ.', 'success');
+  } catch (e) {
+    showToast('Erreur : ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '💾 Enregistrer la fiche';
+  }
+});
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+let toastTimer;
+function showToast(msg, type) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' ' + type : '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 4500);
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+loadFiches();
+checkStoredToken();
+</script>
+</body>
+</html>
