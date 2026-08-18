@@ -1,0 +1,23 @@
+[
+  {
+    "id": "f-1787058602792-pas-de-synchronisation-entre-le-procemex-wis-et-bobineuse-po",
+    "titre": "Pas de synchronisation entre le Procemex WIS et bobineuse (point vert)",
+    "equipement": "Procemex",
+    "cycle": "Bobinage",
+    "motsCles": [
+      "synchronisation",
+      "WIS",
+      "Procemex",
+      "point vert"
+    ],
+    "description": "Les points verts ne s'affichent pas ou peu",
+    "solution": "1/ Vérifier que la caméra bobineuse visualise le bord de la feuille. Déplacer feuille ou caméra WIS (PROD.M.624)\n2/ Vérifier la présence d'un code barres et de son intensité de visualisation. Nettoyer le marquage jet d'encre WIS à l'enrouleuse (PROD.P.607)",
+    "pdf": "uploads/f-1787058602792-pas-de-synchronisation-entre-le-procemex-wis-et-bobineuse-po/prod-m-624-a-controler-la-presence-du-marquage-jet-d-encre-p.pdf",
+    "photos": [
+      "uploads/f-1787058602792-pas-de-synchronisation-entre-le-procemex-wis-et-bobineuse-po/1787058606620-20260818-115005-jpg.jpg",
+      "uploads/f-1787058602792-pas-de-synchronisation-entre-le-procemex-wis-et-bobineuse-po/1787058610327-defaut-wis-jpg.jpg"
+    ],
+    "dateMaj": "2026-08-18T13:10:12.567Z",
+    "auteur": "Responsable bobineuse"
+  }
+]
