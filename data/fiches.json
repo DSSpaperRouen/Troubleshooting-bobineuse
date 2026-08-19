@@ -121,5 +121,23 @@
     "photos": [],
     "dateMaj": "2026-08-19T06:14:09.579Z",
     "auteur": "Responsable bobineuse"
+  },
+  {
+    "id": "f-1787142235690-collage-de-la-bobine-mere-ne-se-lance-pas",
+    "titre": "Collage de la bobine mère ne se lance pas",
+    "equipement": "Rouleau d'application bobine mère + coupe",
+    "cycle": "Changement de bobine mère",
+    "motsCles": [
+      "carré noir",
+      "easy splice",
+      "flying splice",
+      "changement bobine mère"
+    ],
+    "description": "Le collage ne se lance pas. La nouvelle bobine mère continue de tourner tout en déroulant le culot de l'enrouleur. Il n'y a pas de détection du carré noir.",
+    "solution": "1/ Nettoyer la cellule orange sur le bras du rouleau encolleur côté conducteur. \n2/ Vérifier l'orientation du spot d'éclairage pour qu'il vise le carré noir. \n3/ Remplacer la cellule orange ou régler la sensibilité",
+    "pdf": null,
+    "photos": [],
+    "dateMaj": "2026-08-19T12:23:55.691Z",
+    "auteur": "Responsable bobineuse"
   }
 ]
