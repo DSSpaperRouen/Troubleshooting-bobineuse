@@ -103,5 +103,23 @@
     ],
     "dateMaj": "2026-08-18T14:12:53.580Z",
     "auteur": "Responsable bobineuse"
+  },
+  {
+    "id": "f-1787120049578-feuille-qui-saute-lors-de-la-fin-de-descente-du-bras-de-leva",
+    "titre": "Feuille qui saute lors de la fin de descente du bras de levage",
+    "equipement": "Bras de levage",
+    "cycle": "Changement de bobine mère",
+    "motsCles": [
+      "Bras de levage",
+      "changement bobine mère",
+      "changement tambour",
+      "feuille saute"
+    ],
+    "description": "La feuille saute lorsque le bras de levage n'est plus en contact sur l'enrouleur, en phase de descente.",
+    "solution": "Remplacer les deux pièces de téflons au bout du bras de levage du côté conducteur et transmission",
+    "pdf": null,
+    "photos": [],
+    "dateMaj": "2026-08-19T06:14:09.579Z",
+    "auteur": "Responsable bobineuse"
   }
 ]
