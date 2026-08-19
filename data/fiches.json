@@ -157,5 +157,24 @@
     "photos": [],
     "dateMaj": "2026-08-19T12:32:05.291Z",
     "auteur": "Responsable bobineuse"
+  },
+  {
+    "id": "f-1787143635139-bobineuse-continue-d-enrouler-a-10m-min-apres-collage-et-per",
+    "titre": "Bobineuse continue d'enrouler à 10m/min après collage et perforation",
+    "equipement": "Rouleau applicateur colle + perforation",
+    "cycle": "Changement de levée",
+    "motsCles": [
+      "application colle",
+      "perforation levée",
+      "perforation",
+      "changement de levée",
+      "10m/min"
+    ],
+    "description": "Après la perforation et l'application de la colle, la bobineuse continue de tourner à 10m/min sans s'arrêter. L'opérateur est obligé d'arrêter la bobineuse manuellement.",
+    "solution": "Bien penser à retirer le surplus de papier après la perforation sinon nous payons une réclamation de 750€ par bobine !\n1/ Nettoyer la cellule à côté du rouleau applicateur de colle dans la fosse. Elle se trouve côté transmission. Et nettoyer le trou sur le côté du rouleau encolleur (aligné avec la brosse)\n2/ Remplacer cette même cellule\n3: Remplacer carte automate E/S",
+    "pdf": null,
+    "photos": [],
+    "dateMaj": "2026-08-19T12:47:15.139Z",
+    "auteur": "Responsable bobineuse"
   }
 ]
