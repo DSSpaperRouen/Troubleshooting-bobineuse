@@ -139,5 +139,23 @@
     "photos": [],
     "dateMaj": "2026-08-19T12:23:55.691Z",
     "auteur": "Responsable bobineuse"
+  },
+  {
+    "id": "f-1787142725291-collage-de-la-feuille-sur-la-bobine-mere-plus-tot",
+    "titre": "Collage de la feuille sur la bobine mère plus tôt",
+    "equipement": "Rouleau d'application bobine mère + coupe",
+    "cycle": "Changement de bobine mère",
+    "motsCles": [
+      "changement bobine mère",
+      "rouleau encolleur",
+      "rouleau encoleur",
+      "détection"
+    ],
+    "description": "Lors de la phase d'approche du rouleau encolleur, il vient toucher la bobine mère et colle avant de faire son cycle d'application du rouleau encolleur sur la bobine mère et découpe.",
+    "solution": "Nettoyer la cellule bleue présente sur le bras du rouleau encolleur côté conducteur.",
+    "pdf": null,
+    "photos": [],
+    "dateMaj": "2026-08-19T12:32:05.291Z",
+    "auteur": "Responsable bobineuse"
   }
 ]
