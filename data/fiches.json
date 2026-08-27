@@ -194,5 +194,24 @@
     "photos": [],
     "dateMaj": "2026-08-26T11:52:50.653Z",
     "auteur": "Responsable bobineuse"
+  },
+  {
+    "id": "f-1787820164574-difficulte-a-separer-la-levee-sur-changement-de-levee",
+    "titre": "Difficulté à séparer la levée sur changement de levée",
+    "equipement": "Éjecteur",
+    "cycle": "Changement de levée",
+    "motsCles": [
+      "séparation",
+      "séparer",
+      "levée",
+      "bobines",
+      "perforation"
+    ],
+    "description": "Le grafcet de changement de levée se bloque pour défaut \"drive 2 inching for web fastening\". \nPhysiquement, il y a eu l'application de colle et la perforation. L'éjecteur a commencé à avancer la levée et le grafcet se bloque au moment de tourner la levée pour séparer la feuille.",
+    "solution": "Diminuer le seuil de tirage de 60 à 40% temporairement\nSi pas de plancher, remplacer les couteaux de perforation",
+    "pdf": "uploads/f-1787820164574-difficulte-a-separer-la-levee-sur-changement-de-levee/separer-la-levee-finie-pdf.pdf",
+    "photos": [],
+    "dateMaj": "2026-08-27T08:42:48.149Z",
+    "auteur": "Responsable bobineuse"
   }
 ]
