@@ -230,5 +230,24 @@
     "photos": [],
     "dateMaj": "2026-09-17T09:32:37.992Z",
     "auteur": "Responsable bobineuse"
+  },
+  {
+    "id": "f-1789638782870-coupe-au-changement-de-bobine-mere-n-est-pas-net",
+    "titre": "Coupe au changement de bobine mère n'est pas net",
+    "equipement": "Bras de levage",
+    "cycle": "Changement de bobine mère",
+    "motsCles": [
+      "coupe",
+      "perforation",
+      "changement de bobine mère",
+      "changement de tambour",
+      "déchirement"
+    ],
+    "description": "les dents sur le papier restant de l'enrouleur ne sont pas nets et font un aspect déchiré",
+    "solution": "1/ Contrôler la présence de fuite d'air\n2/ Vérifier les mouvements de vérin\n3/ Vérifier l'usure des lames de coupe (Attention port des gants obligatoires)",
+    "pdf": null,
+    "photos": [],
+    "dateMaj": "2026-09-17T09:53:02.871Z",
+    "auteur": "Responsable bobineuse"
   }
 ]
