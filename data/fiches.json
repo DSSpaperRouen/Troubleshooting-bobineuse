@@ -261,11 +261,13 @@
       "corelink",
       "programmation"
     ],
-    "description": "Les mandrins ne sont pas coupés automatiquement malgré le mode auto actif sur le DCS de la bobineuse. \nProblème : bouton de gauche sélectionné sur le pupitre de la coupeuse à mandrins",
-    "solution": "Sélectionner le bouton du milieu de la coupeuse à mandrins pour relancer la demande de mandrins automatiquement.",
+    "description": "Les mandrins ne sont pas coupés automatiquement malgré le mode auto actif sur le DCS de la bobineuse. \nProblème : bouton de gauche ou du milieu sélectionné sur le pupitre de la coupeuse à mandrins",
+    "solution": "Sélectionner le bouton de droite de la coupeuse à mandrins pour relancer la demande de mandrins automatiquement.",
     "pdf": null,
-    "photos": [],
-    "dateMaj": "2026-09-17T09:57:46.679Z",
+    "photos": [
+      "uploads/f-1789639066679-oblige-de-commander-manuellement-les-mandrins-a-chaque-levee/1789639444124-corelink-jpg.jpg"
+    ],
+    "dateMaj": "2026-09-17T10:04:06.504Z",
     "auteur": "Responsable bobineuse"
   }
 ]
