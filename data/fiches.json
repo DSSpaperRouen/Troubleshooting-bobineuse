@@ -213,5 +213,22 @@
     "photos": [],
     "dateMaj": "2026-08-27T08:42:48.149Z",
     "auteur": "Responsable bobineuse"
+  },
+  {
+    "id": "f-1789637557991-casse-reguliere-au-pied-d-une-bobine-mere",
+    "titre": "Casse régulière au pied d'une bobine mère",
+    "equipement": "Dérouleuse",
+    "cycle": "Bobinage",
+    "motsCles": [
+      "casse",
+      "pied",
+      "éclaté"
+    ],
+    "description": "la bobine casse autour de papier restant entre 32 et 35mm.",
+    "solution": "Vérifier l'angle du rouleau déplisseur de l'enrouleuse. \n\nVérifier que la position de la bobine mère ne soit pas supérieure à 20mm et inférieure à -20mm",
+    "pdf": null,
+    "photos": [],
+    "dateMaj": "2026-09-17T09:32:37.992Z",
+    "auteur": "Responsable bobineuse"
   }
 ]
